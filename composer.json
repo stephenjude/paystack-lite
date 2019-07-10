@@ -1,0 +1,54 @@
+{
+    "name": "stephenjude/paystack-lite",
+    "description": "Easy integration of paystack checkout form.",
+    "keywords": [
+        "stephenjude",
+        "paystack-lite"
+    ],
+    "homepage": "https://github.com/stephenjude/paystack-lite",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Stephen Jude",
+            "email": "stephenjudesuccess@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.8.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Stephenjude\\PaystackLite\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Stephenjude\\PaystackLite\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Stephenjude\\PaystackLite\\PaystackLiteServiceProvider"
+            ],
+            "aliases": {
+                "PaystackLite": "Stephenjude\\PaystackLite\\PaystackLiteFacade"
+            }
+        }
+    }
+}
