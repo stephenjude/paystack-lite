@@ -1,12 +1,7 @@
 language: php
 
 php:
-  - 7.1
-  - hhvm
-
-matrix:
-    allow_failures:
-    - php: hhvm
+  - nightly
 
 install: travis_retry composer install --no-interaction --prefer-source
 
