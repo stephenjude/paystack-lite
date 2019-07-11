@@ -16,6 +16,7 @@
         }
     ],
     "require": {
+        "php": "^5.4.0|^7.0",
         "unicodeveloper/laravel-paystack": "1.0.*"
     },
     "require-dev": {
