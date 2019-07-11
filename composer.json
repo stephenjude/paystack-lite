@@ -16,8 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.1",
-        "illuminate/support": "5.8.*"
+        "unicodeveloper/laravel-paystack": "1.0.*"
     },
     "require-dev": {
         "orchestra/testbench": "3.8.*",
@@ -36,7 +35,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true
