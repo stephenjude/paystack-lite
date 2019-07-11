@@ -1,9 +1,11 @@
 language: php
 
 php:
-  - nightly
+  - 7.1
 
-install: travis_retry composer install --no-interaction --prefer-source
+install: 
+  - travis_retry composer install --no-interaction --prefer-source
+  - composer require phpunit/phpunit 7.0
 
 script:
   - mkdir -p build/logs
