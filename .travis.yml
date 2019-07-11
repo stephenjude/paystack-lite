@@ -2,21 +2,23 @@ language: php
 
 php:
   - 5.5
-  - 7.1
-  - 7.2
-  - 7.3
+  - 5.6
+  - 7.0
+  - hhvm
 
-env:
-  matrix:
-    - COMPOSER_FLAGS="--prefer-lowest"
-    - COMPOSER_FLAGS=""
+matrix:
+    allow_failures:
+    - php: hhvm
 
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
+install: travis_retry composer install --no-interaction --prefer-source
 
 script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit -c phpunit.xml.dist
+  - phpunit --coverage-text --coverage-clover=coverage.clover
+  - phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
-  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - travis_retry php vendor/bin/coveralls -v
