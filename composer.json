@@ -20,7 +20,7 @@
         "unicodeveloper/laravel-paystack": "1.0.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "7.0"
+        "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "psr-4": {
