@@ -1,18 +1,18 @@
-# PaystackLite for LaravelPHP
-
 <!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/stephenjude/paystack-lite.svg)](https://packagist.org/packages/stephenjude/paystack-lite)
 [![Build Status](https://img.shields.io/travis/stephenjude/paystack-lite/master.svg)](https://travis-ci.com/stephenjude/paystack-lite.svg?branch=master)
 [![Quality Score](https://img.shields.io/scrutinizer/g/stephenjude/paystack-lite.svg)](https://scrutinizer-ci.com/g/stephenjude/paystack-lite)
 [![GitHub license](https://img.shields.io/github/license/stephenjude/paystack-lite.svg)](https://github.com/stephenjude/paystack-lite/blob/master/LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/stephenjude/paystack-lite.svg)](https://packagist.org/packages/stephenjude/paystack-lite) -->
-![Ziggy - Use your Laravel Named Routes inside JavaScript](https://miro.medium.com/max/529/1*H0mgrgTCCawmoT6ZeMieqQ.png)
+<p align="center">
+  <img width="460" src="https://miro.medium.com/max/529/1*H0mgrgTCCawmoT6ZeMieqQ.png">
+</p>
 
-# Paystack Lite - Use paystack checkout form on the go.
+# Paystack Lite - Use Paystack Checkout Form on the go.
 Paystack Lite creates a blade directive you can include in your views. This is the easiest integration of paystack checkout form for Laravel applications.
 
 ## Installation
 
-1. Add Ziggy to your Composer file: `composer require stephenjude/paystack-lite`
+1. Add PaystackLite to your Composer file: `composer require stephenjude/paystack-lite`
 
 2. (if Laravel 5.4) Add `Stephenjude\PaystackLite\PaystackLiteServiceProvider::class` to the `providers` array in your `config/app.php`.
 
