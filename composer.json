@@ -1,6 +1,6 @@
 {
     "name": "stephenjude/paystack-lite",
-    "description": "Easy integration of paystack checkout form for LaravelPHP uisng blade directives.",
+    "description": "Paystack Lite - Use Paystack Checkout Form on the go.",
     "keywords": [
         "stephenjude",
         "paystack-lite"
