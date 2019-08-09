@@ -21,7 +21,7 @@ class PaystackLiteServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('paystack-lite.php'),
+                __DIR__ . '/../config/config.php' => config_path('paystack-lite.php'),
             ], 'config');
 
             // Publishing the views.
@@ -42,6 +42,8 @@ class PaystackLiteServiceProvider extends ServiceProvider
             // Registering package commands.
             // $this->commands([]);
         }
+
+        (new PaystackLite())->payWithPaystack();
     }
 
     /**
@@ -50,7 +52,7 @@ class PaystackLiteServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'paystack-lite');
+        $this->mergeConfigFrom(__DIR__ . '/../config/paystack-lite.php', 'paystack-lite');
 
         // Register the main class to use with the facade
         $this->app->singleton('paystack-lite', function () {

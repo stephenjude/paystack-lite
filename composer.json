@@ -1,6 +1,6 @@
 {
     "name": "stephenjude/paystack-lite",
-    "description": "Easy integration of paystack checkout form for LaravelPHP.",
+    "description": "Easy integration of paystack checkout form for LaravelPHP uisng blade directives.",
     "keywords": [
         "stephenjude",
         "paystack-lite"
@@ -16,7 +16,6 @@
         }
     ],
     "require": {
-        "php": "^5.6",
         "unicodeveloper/laravel-paystack": "1.0.*"
     },
     "require-dev": {
