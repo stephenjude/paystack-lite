@@ -66,7 +66,67 @@ The package also creates  `payWithPaystack(amount, email, meta, onPaymentComplet
 
 ```
 
-###
+## Paystack Fluent APIs
+This package makes use of [unicodeveloper/laravel-paystack](https://github.com/unicodeveloper/laravel-paystack) package.  So you can use all paystack fluent APIs provided in the package.
+
+### Usage
+
+```php
+
+    use Stephenjude\PaystackLite\Facades\PaystackLite;
+
+    /**
+     * This method gets all the customers that have performed transactions on your platform with Paystack
+     * @returns array
+     */
+    PaystackLite::getAllCustomers();
+
+    /**
+     * This method gets all the plans that you have registered on Paystack
+     * @returns array
+     */
+    PaystackLite::getAllPlans();
+
+    /**
+     * This method gets all the transactions that have occurred
+     * @returns array
+     */
+    PaystackLite::getAllTransactions();
+
+    /**
+     * This method generates a unique super secure cryptograhical hash token to use as transaction reference
+     * @returns string
+     */
+    PaystackLite::genTranxRef();
+
+    /**
+    * This method creates a subaccount to be used for split payments 
+    * @return array
+    */
+    PaystackLite::createSubAccount();
+
+
+    /**
+    * This method fetches the details of a subaccount  
+    * @return array
+    */
+    PaystackLite::fetchSubAccount();
+
+
+    /**
+    * This method lists the subaccounts associated with your paystack account 
+    * @return array
+    */
+    PaystackLite::listSubAccounts();
+
+    /**
+    * This method Updates a subaccount to be used for split payments 
+    * @return array
+    */
+    PaystackLite::updateSubAccount();
+
+```
+See the package [Readme.md](https://github.com/unicodeveloper/laravel-paystack) file.
 
 ### Changelog
 
