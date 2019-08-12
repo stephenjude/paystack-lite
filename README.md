@@ -14,11 +14,14 @@ Paystack Lite creates a blade directive you can include in your views. This is t
 
 ## Installation
 
-1. Add PaystackLite to your Composer file: `composer require stephenjude/paystack-lite`
+1. Install PaystackLite  with composer
+```bash
+composer require stephenjude/paystack-lite
+```
 
-2. (if Laravel 5.4) Add `Stephenjude\PaystackLite\PaystackLiteServiceProvider::class` to the `providers` array in your `config/app.php`.
+2. if you are using Laravel less than 5.4 Add `Stephenjude\PaystackLite\PaystackLiteServiceProvider::class` to the `providers` array in your `config/app.php`.
 
-3. Include our Blade Directive (`@paystack`) somewhere in your template before your main application JavaScript is loaded&mdash;likely in the header somewhere.
+3. Include the Blade Directive (`@paystack`) somewhere in your template before your main application JavaScript is loaded&mdash;likely in the header somewhere.
 
 4. Open your .env file and add your public key, secret key, customer default email and payment url like so:
 ```
@@ -27,7 +30,6 @@ PAYSTACK_SECRET_KEY=xxxxxxxxxxxxx
 PAYSTACK_PAYMENT_URL=https://api.paystack.co
 PAYSTACK_CUSTOMER_DEFAULT_EMAIL=general@email.com
 ```
-
 
 ## Usage
 The package also creates  `payWithPaystack(amount, email, meta, onPaymentCompleted, onPaymentCancelled)` JavaScript helper which takes five parameters. the amount, customer email, meta data, callback for payment completed and callback when checkout form is closed.
