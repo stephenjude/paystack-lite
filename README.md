@@ -30,13 +30,12 @@ PAYSTACK_CUSTOMER_DEFAULT_EMAIL=general@email.com
 ```
 
 ## Usage
-Paystack-lite make use of `@paystack` blade directive for popup checkout form 
-and `@paystackembeded(amount, 'callback', 'email')` for emebeded checkout form.
+Paystack-lite make use of blade directive to abstract away all javascript configurations for setting up paystack checkout forms.
 
-### @paystack popup example
+### Paystack Popup Example
 Include the Blade Directive (`@paystack`) somewhere in your template before your main application JavaScript is loaded.
 
-The `@paystack` blade driective creates  `payWithPaystack(amount, email, meta, onPaymentCompleted, onPaymentCancelled)` JavaScript helper which takes five parameters. the amount, customer email, meta data, callback for payment completed and callback when checkout form is closed.
+The `@paystack` blade directive creates  `payWithPaystack(amount, email, meta, onPaymentCompleted, onPaymentCancelled)` JavaScript helper which takes five parameters. the amount, customer email, meta data, callback for payment completed and callback when checkout form is closed.
 
 ```js
 
@@ -73,7 +72,7 @@ The `@paystack` blade driective creates  `payWithPaystack(amount, email, meta, o
 
 ```
 
-### paystack emebeded example
+### Paystack Emebeded Example
 
 Include the paystack embeded blade directive inside of your html container
 
