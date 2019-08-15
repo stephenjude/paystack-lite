@@ -2,13 +2,13 @@
 <p align="center">
   <img width="460" src="https://miro.medium.com/max/529/1*H0mgrgTCCawmoT6ZeMieqQ.png">
 </p>
-
- [![Latest Version on Packagist](https://img.shields.io/packagist/v/stephenjude/paystack-lite.svg)](https://packagist.org/packages/stephenjude/paystack-lite)
-[![Build Status](https://img.shields.io/travis/stephenjude/paystack-lite/master.svg)](https://travis-ci.com/stephenjude/paystack-lite.svg?branch=master)
-[![Quality Score](https://img.shields.io/scrutinizer/g/stephenjude/paystack-lite.svg)](https://scrutinizer-ci.com/g/stephenjude/paystack-lite)
-[![GitHub license](https://img.shields.io/github/license/stephenjude/paystack-lite.svg)](https://github.com/stephenjude/paystack-lite/blob/master/LICENSE.md)
-[![Total Downloads](https://img.shields.io/packagist/dt/stephenjude/paystack-lite.svg)](https://packagist.org/packages/stephenjude/paystack-lite) 
-
+<p align="center">
+<a href="https://packagist.org/packages/stephenjude/paystack-lite"><img src="https://img.shields.io/packagist/v/stephenjude/paystack-lite.svg" alt="Latest Version on Packagist"></a>
+<a href="https://travis-ci.com/stephenjude/paystack-lite.svg?branch=master"><img src="https://img.shields.io/travis/stephenjude/paystack-lite/master.svg" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/stephenjude/paystack-lite"><img src="https://img.shields.io/scrutinizer/g/stephenjude/paystack-lite.svg" alt="Quality Score"></a>
+<a href="https://github.com/stephenjude/paystack-lite/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/stephenjude/paystack-lite.svg" alt="GitHub license"></a>
+<a href="https://packagist.org/packages/stephenjude/paystack-lite"><img src="https://img.shields.io/packagist/dt/stephenjude/paystack-lite.svg" alt="Total Downloads"></a>
+</p>
 # Paystack Lite - Use Paystack Checkout Form on the go.
 Paystack Lite creates a blade directive you can include in your views. This is the easiest integration of paystack checkout form for Laravel applications.
 
