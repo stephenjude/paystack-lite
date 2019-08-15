@@ -21,9 +21,7 @@ composer require stephenjude/paystack-lite
 
 2. if you are using Laravel less than 5.4 Add `Stephenjude\PaystackLite\PaystackLiteServiceProvider::class` to the `providers` array in your `config/app.php`.
 
-3. Include the Blade Directive (`@paystack`) somewhere in your template before your main application JavaScript is loaded&mdash;likely in the header somewhere.
-
-4. Open your .env file and add your public key, secret key, customer default email and payment url like so:
+3. Open your .env file and add your public key, secret key, customer default email and payment url like so:
 ```
 PAYSTACK_PUBLIC_KEY=xxxxxxxxxxxxx
 PAYSTACK_SECRET_KEY=xxxxxxxxxxxxx
@@ -32,9 +30,14 @@ PAYSTACK_CUSTOMER_DEFAULT_EMAIL=general@email.com
 ```
 
 ## Usage
-The package also creates  `payWithPaystack(amount, email, meta, onPaymentCompleted, onPaymentCancelled)` JavaScript helper which takes five parameters. the amount, customer email, meta data, callback for payment completed and callback when checkout form is closed.
+Paystack-lite make use of `@paystack` blade directive for popup checkout form 
+and `@paystackembeded(amount, 'callback', 'email')` for emebeded checkout form.
 
-### example
+### @paystack popup example
+Include the Blade Directive (`@paystack`) somewhere in your template before your main application JavaScript is loaded.
+
+The `@paystack` blade driective creates  `payWithPaystack(amount, email, meta, onPaymentCompleted, onPaymentCancelled)` JavaScript helper which takes five parameters. the amount, customer email, meta data, callback for payment completed and callback when checkout form is closed.
+
 ```js
 
     var amount = 1000;
@@ -69,6 +72,28 @@ The package also creates  `payWithPaystack(amount, email, meta, onPaymentComplet
     }
 
 ```
+
+### paystack emebeded example
+
+Include the paystack embeded blade directive inside of your html container
+
+```html
+    <div>
+        @paystackEmbeded(1000, 'onPaymentCompleted', 'customer@email.com')
+    </div>
+```
+
+Add your javascript callback function
+
+```js
+   
+    function onPaymentCompleted(response) {
+        alert('payment completed!');
+        console.log(resposne);
+    }
+
+```
+
 
 ## Paystack Fluent APIs
 This package makes use of [unicodeveloper/laravel-paystack](https://github.com/unicodeveloper/laravel-paystack) package.  So you can use all paystack fluent APIs provided in the package.
