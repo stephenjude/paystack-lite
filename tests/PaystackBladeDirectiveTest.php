@@ -2,20 +2,19 @@
 
 namespace Stephenjude\PaystackLite\Tests;
 
-use PHPUnit\Framework\TestCase;
 
-class PaystackBladeDirectiveTest extends TestCase
+class PaystackBladeDirectiveTest
 {
-    private $blade;
+    // private $blade;
 
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
+    // public function setUp(): void
+    // {
+    //     parent::setUp();
+    // }
 
-    public function test_example()
-    {
-        $this->assertTrue(true);
-    }
+    // public function test_example()
+    // {
+    //     $this->assertTrue(true);
+    // }
 
 }

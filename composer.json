@@ -3,7 +3,8 @@
     "description": "Paystack Lite - Use Paystack Checkout Form on the go.",
     "keywords": [
         "stephenjude",
-        "paystack-lite"
+        "paystack-lite",
+        "paystack"
     ],
     "homepage": "https://github.com/stephenjude/paystack-lite",
     "license": "MIT",
@@ -16,12 +17,11 @@
         }
     ],
     "require": {
-        "illuminate/support": "^5.3",
-        "unicodeveloper/laravel-paystack": "1.0.*"
+        "illuminate/support": "^5.7"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.0",
-        "orchestra/testbench": "^3.0"
+        "phpunit/phpunit": "^7.0",
+        "orchestra/testbench": "^3.7"
     },
     "autoload": {
         "psr-4": {
