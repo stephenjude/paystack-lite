@@ -6,6 +6,10 @@
 return [
 
     /**
+     * Paystack WebHook URL
+     */
+    'webhookUrl' => '/paystack/hook',
+    /**
      * Public Key From Paystack Dashboard
      *
      */
