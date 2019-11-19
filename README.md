@@ -47,11 +47,6 @@ The `@paystack` blade directive creates  `payWithPaystack(amount, email, meta, o
                 display_name: "Name",
                 variable_name: "name",
                 value: "My Customer"
-            },
-            {
-                display_name: "Mobile Number",
-                variable_name: "mobile_number",
-                value: "+2348012345678"
             }
          ]
     }; 
