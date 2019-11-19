@@ -22,7 +22,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
-        "orchestra/testbench": "^3.7"
+        "orchestra/testbench": "^3.7|^4.0"
     },
     "autoload": {
         "psr-4": {
@@ -47,7 +47,7 @@
                 "Stephenjude\\PaystackLite\\PaystackLiteServiceProvider"
             ],
             "aliases": {
-                "PaystackLite": "Stephenjude\\PaystackLite\\PaystackLiteFacade"
+                "PaystackLite": "Stephenjude\\PaystackLite\\Facades\\PaystackLite"
             }
         }
     }

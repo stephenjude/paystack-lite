@@ -2,8 +2,9 @@
 
 namespace Stephenjude\PaystackLite\Tests;
 
+use Orchestra\Testbench\TestCase;
 
-class PaystackBladeDirectiveTest
+class PaystackBladeDirectiveTest extends TestCase
 {
     // private $blade;
 
@@ -12,9 +13,9 @@ class PaystackBladeDirectiveTest
     //     parent::setUp();
     // }
 
-    // public function test_example()
-    // {
-    //     $this->assertTrue(true);
-    // }
+    public function test_example()
+    {
+        $this->assertTrue(true);
+    }
 
 }
