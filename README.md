@@ -154,7 +154,7 @@ This package makes use of [unicodeveloper/laravel-paystack](https://github.com/u
     PaystackLite::updateSubAccount();
 
 ```
-See the package [Readme.md](https://github.com/unicodeveloper/laravel-paystack) file.
+See the package [Readme.md](https://github.com/unicodeveloper/laravel-paystack).
 
 ### Changelog
 
