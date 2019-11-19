@@ -95,7 +95,7 @@ Add your javascript callback function
 
 
 ## Paystack Fluent APIs
-This package makes use of [unicodeveloper/laravel-paystack](https://github.com/unicodeveloper/laravel-paystack) package.  So you can use all paystack fluent APIs provided in the package.
+This package makes use of [bosunski/lpaystack](https://github.com/bosunski/lpaystack) package.  So you can use all [paystack fluent APIs](https://paystack-client.herokuapp.com/#/api/supported) provided in the package.
 
 ### Usage
 
@@ -103,58 +103,29 @@ This package makes use of [unicodeveloper/laravel-paystack](https://github.com/u
 
     use Stephenjude\PaystackLite\Facades\PaystackLite;
 
+
     /**
-     * This method gets all the customers that have performed transactions on your platform with Paystack
-     * @returns array
+     * This gets all your transactions
      */
-    PaystackLite::getAllCustomers();
-
+    PaystackLite::api()->transactions()->list();
+    
     /**
-     * This method gets all the plans that you have registered on Paystack
-     * @returns array
+     * This verifies a transaction with transaction reference passed as parameter
      */
-    PaystackLite::getAllPlans();
+    PaystackLite::api()->transactions()->verify($ref);
 
     /**
-     * This method gets all the transactions that have occurred
-     * @returns array
+     * This  gets all your paystack customers.
      */
-    PaystackLite::getAllTransactions();
+    PaystackLite::api()->customers()->list();
 
     /**
-     * This method generates a unique super secure cryptograhical hash token to use as transaction reference
-     * @returns string
+     * This  gets all the plans that you have registered on Paystack
      */
-    PaystackLite::genTranxRef();
-
-    /**
-    * This method creates a subaccount to be used for split payments 
-    * @return array
-    */
-    PaystackLite::createSubAccount();
-
-
-    /**
-    * This method fetches the details of a subaccount  
-    * @return array
-    */
-    PaystackLite::fetchSubAccount();
-
-
-    /**
-    * This method lists the subaccounts associated with your paystack account 
-    * @return array
-    */
-    PaystackLite::listSubAccounts();
-
-    /**
-    * This method Updates a subaccount to be used for split payments 
-    * @return array
-    */
-    PaystackLite::updateSubAccount();
+    PaystackLite::api()->plans()->list();
 
 ```
-See the package [Readme.md](https://github.com/unicodeveloper/laravel-paystack).
+See the supported Paystack APIs [here](https://paystack-client.herokuapp.com/#/api/supported).
 
 ### Changelog
 
