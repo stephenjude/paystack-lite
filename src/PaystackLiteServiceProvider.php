@@ -12,14 +12,13 @@ class PaystackLiteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        PaystackBladeDirective::register();
+        
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/paystack-lite.php' => config_path('paystack-lite.php'),
             ], 'config');
         }
-
-        PaystackBladeDirective::register();
     }
 
     /**
