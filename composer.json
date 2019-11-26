@@ -31,8 +31,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Stephenjude\\PaystackLite\\Tests\\": "tests",
-            "Stephenjude\\PaystackLite\\Tests\\App\\": "tests/laravel/app"
+            "Stephenjude\\PaystackLite\\Tests\\": "tests"
         }
     },
     "scripts": {
