@@ -7,13 +7,12 @@ trait RendersBlade
     /**
      * Compile blade markup into PHP code.
      *
-     * @param string $viewContent blade markup
-     * @param array $viewData
+     * @param string $blade_directive blade markup
      * @return string
      */
-    protected function compileBlade($viewContent, $viewData = [])
+    protected function compileBlade($blade_directive)
     {
-        return app('blade.compiler')->compileString($viewContent);
+        return app('blade.compiler')->compileString($blade_directive);
     }
 
     /**
@@ -45,17 +44,17 @@ trait RendersBlade
     /**
      * Execute PHP code and return the output.
      *
-     * @param string $phpCode
+     * @param string $php_code
      * @return string
      */
-    protected function getCodeOutput($phpCode)
+    protected function getCodeOutput($php_code)
     {
         ob_start();
 
         // emulate variable shared with all views
         $__env = app('view');
 
-        eval('?>'.$phpCode);
+        eval('?>'.$php_code);
         $output = ob_get_contents();
 
         ob_end_clean();
@@ -68,12 +67,11 @@ trait RendersBlade
      *
      * Output is trimmed.
      *
-     * @param string $viewContent blade markup
-     * @param array $viewData
+     * @param string $blade_directive blade markup
      * @return string
      */
-    protected function renderBlade($viewContent, $viewData = [])
+    protected function renderBlade($blade_directive)
     {
-        return trim($this->getCodeOutput($this->compileBlade($viewContent, $viewData)));
+        return trim($this->getCodeOutput($this->compileBlade($blade_directive)));
     }
 }

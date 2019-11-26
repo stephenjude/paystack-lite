@@ -7,7 +7,7 @@ use Stephenjude\PaystackLite\PaystackLite;
 class PaystackLiteTest extends TestCase
 {
 
-    public function test_paystack_api_method_returns_instance_of_paystack_manager()
+    public function test_paystacklite_api_method_returns_instance_of_paystack_manager()
     {
 
         $paystack_lite = app(PaystackLite::class)->api();

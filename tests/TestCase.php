@@ -18,13 +18,12 @@ class TestCase extends BaseTestCase
     /**
      * Assert that blade markup and view data render HTML markup.
      *
-     * @param string $expectedHtml
-     * @param string $viewContent blade markup
-     * @param array $viewData
+     * @param string $expected_html
+     * @param string $blade_directive blade markup
      * @return void
      */
-    protected function assertBladeRenders($expectedHtml, $viewContent, $viewData = [])
+    protected function assertBladeRenders($expected_html, $blade_directive)
     {
-        $this->assertEquals($expectedHtml, $this->renderBlade($viewContent, $viewData));
+        $this->assertEquals($expected_html, $this->renderBlade($blade_directive));
     }
 }
