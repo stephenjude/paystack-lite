@@ -10,6 +10,11 @@ class TestCase extends BaseTestCase
 {
     use CreatesApplication, RendersBlade;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+    }
+
     /**
      * Assert that blade markup and view data render HTML markup.
      *

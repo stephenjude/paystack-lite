@@ -10,6 +10,7 @@ trait CreatesApplication
     {
         return [
             \Stephenjude\PaystackLite\PaystackLiteServiceProvider::class,
+            \Xeviant\LaravelPaystack\PaystackServiceProvider::class,
             \Stephenjude\PaystackLite\Tests\App\Providers\RouteServiceProvider::class,
         ];
     }
@@ -17,6 +18,14 @@ trait CreatesApplication
     protected function getEnvironmentSetUp($app)
     {
         $app->setBasePath(__DIR__ . '/../laravel');
+
         View::addLocation(resource_path('views'));
+
+        $app['config']->set('app.key', 'base64:6Cu/ozj4gPtIjmXjr8EdVnGFNsdRqZfHfVjQkmTlg4Y=');
+
+        $app['config']->set('paystack.secret_key', 'xxxxxxxxxxxxxxxxxxxx');
+
+        $app['config']->set('paystack.public_key', 'xxxxxxxxxxxxxxxxxxxxx');
+
     }
 }
