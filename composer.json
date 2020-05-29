@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "~5.7.0|~5.8.0|^6.0",
+        "illuminate/support": "~5.7.0|~5.8.0|^6.0|^7.0",
         "xeviant/laravel-paystack": "^1.5"
     },
     "require-dev": {
