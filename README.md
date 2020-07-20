@@ -25,8 +25,6 @@ composer require stephenjude/paystack-lite
 ```
 PAYSTACK_PUBLIC_KEY=xxxxxxxxxxxxx
 PAYSTACK_SECRET_KEY=xxxxxxxxxxxxx
-PAYSTACK_PAYMENT_URL=https://api.paystack.co
-PAYSTACK_CUSTOMER_DEFAULT_EMAIL=general@email.com
 ```
 
 ## Usage
@@ -41,15 +39,7 @@ The `@paystack` blade directive creates  `payWithPaystack(amount, email, meta, o
 
     var amount = 1000;
     var email = 'customer@email.com';
-    var meta = {
-        custom_fields: [
-            {
-                display_name: "Name",
-                variable_name: "name",
-                value: "My Customer"
-            }
-         ]
-    }; 
+    var meta = { /* optional  meta data array */ }; 
 
     document.getElementById('paymentBtn').onclick = function() {
         //display checkout form

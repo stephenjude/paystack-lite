@@ -6,10 +6,6 @@
 return [
 
     /**
-     * Paystack WebHook URL
-     */
-    'webhookUrl' => '/paystack/hook',
-    /**
      * Public Key From Paystack Dashboard
      *
      */
@@ -32,10 +28,4 @@ return [
      *
      */
     'paystack_inline_js' => env('PAYSTACK_INLINE_JS', 'https://js.paystack.co/v1/inline.js'),
-
-    /**
-     * Fallback email for users without email address
-     *
-     */
-    'customer_fallback_email' => env('PAYSTACK_CUSTOMER_DEFAULT_EMAIL', 'customer@email.com'),
 ];
