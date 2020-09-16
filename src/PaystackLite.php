@@ -6,17 +6,17 @@ use Xeviant\LaravelPaystack\Paystack;
 
 class PaystackLite extends Paystack
 {
-    private $paystack;
+    private $paystackLite;
 
     public function __construct()
     {
         parent::__construct();
-        
-        $this->paystack = app()->make('xeviant.paystack');
+
+        $this->paystackLite = app()->make('xeviant.paystack');
     }
 
     public function api()
     {
-        return $this->paystack;
+        return $this->paystackLite;
     }
 }
