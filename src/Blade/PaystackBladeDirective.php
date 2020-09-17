@@ -21,7 +21,7 @@ class PaystackBladeDirective
             $public_key = Config::get('paystack-lite.public_key');
             $cdn = Config::get('paystack-lite.paystack_inline_js');
 
-            return <<<PAYSTACK
+            return <<<EOD
             <script src="$cdn"></script>
             <script>
             function payWithPaystack(amount, email, meta, callback, onclose) {
@@ -45,7 +45,7 @@ class PaystackBladeDirective
                 handler.openIframe();
             }
             </script>
-            PAYSTACK;
+            EOD;
         });
     }
 
@@ -71,7 +71,7 @@ class PaystackBladeDirective
             $public_key = Config::get('paystack-lite.public_key');
             $cdn = Config::get('paystack-lite.paystack_inline_js');
 
-            return <<<PAYSTACK
+            return <<<EOD
             <div id="paystackEmbedContainer"></div>
             <script src="$cdn"></script>
             <script>
@@ -89,7 +89,7 @@ class PaystackBladeDirective
                 var handler = PaystackPop.setup(options);
                 handler.openIframe();
             </script>
-            PAYSTACK;
+            EOD;
         });
     }
 }
