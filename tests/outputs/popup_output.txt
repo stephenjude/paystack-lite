@@ -1,39 +1,23 @@
 <script src="https://js.paystack.co/v1/inline.js"></script>
-
-            <script>
-            function payWithPaystack(amount, email, meta, callback, onclose) {
-               var meta_data = meta ? meta : {};
-                var options = { 
-                    key: '',
-                    email: email,
-                    amount: amount+'00',
-                    metadata: meta,
-                    callback: function(response){
-                        callback(response);
-                    },
-                    onClose:function(){
-                        if(onclose){
-                            onclose();
-                        }
-                    }
-                };
-
-                //check if email is valide else fallback
-                if(!Boolean(options.email)){
-                    options.email = 'customer@email.com';
-                }else{
-                    if(!validateEmail(email)){
-                        options.email = 'customer@email.com';
-                    }
-                }
-
-                var handler = PaystackPop.setup(options);
-                handler.openIframe();
+<script>
+function payWithPaystack(amount, email, meta, callback, onclose) {
+   var meta_data = meta ? meta : {};
+    var options = {
+        key: "",
+        email: email,
+        amount: amount+'00',
+        metadata: meta,
+        callback: function(response){
+            callback(response);
+        },
+        onClose:function(){
+            if(onclose){
+                onclose();
             }
+        }
+    };
 
-            function validateEmail(email) {
-                var re = /^(([^<>()[\]\.,;:\s@"]+(\.[^<>()[\]\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(email);
-            }
-            
-            </script>
+    var handler = PaystackPop.setup(options);
+    handler.openIframe();
+}
+</script>

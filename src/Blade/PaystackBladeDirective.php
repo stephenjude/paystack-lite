@@ -5,8 +5,6 @@ namespace Stephenjude\PaystackLite\Blade;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 
-use function GuzzleHttp\json_encode;
-
 class PaystackBladeDirective
 {
     // Build your next great package.
@@ -20,23 +18,18 @@ class PaystackBladeDirective
     private static function paystackPopupCheckout()
     {
         Blade::directive('paystack', function () {
+            $public_key = Config::get('paystack-lite.public_key');
+            $cdn = Config::get('paystack-lite.paystack_inline_js');
 
-            $public_key = "\'" . Config::get('paystack-lite.public_key') . "\'";
-            $paystack_js = '<script src="' . Config::get('paystack-lite.paystack_inline_js') . '"></script>';
-            $script_open = "<script>";
-            $script_closed = "</script>";
-
-            return "<?php
-            echo '
-            $paystack_js
-
-            $script_open
+            return <<<PAYSTACK
+            <script src="$cdn"></script>
+            <script>
             function payWithPaystack(amount, email, meta, callback, onclose) {
                var meta_data = meta ? meta : {};
                 var options = {
-                    key: $public_key,
+                    key: "$public_key",
                     email: email,
-                    amount: amount+\'00\',
+                    amount: amount+'00',
                     metadata: meta,
                     callback: function(response){
                         callback(response);
@@ -51,22 +44,15 @@ class PaystackBladeDirective
                 var handler = PaystackPop.setup(options);
                 handler.openIframe();
             }
-
-            $script_closed
-            ';
-            ?>";
+            </script>
+            PAYSTACK;
         });
     }
 
-
     private static function paystackEmbededCheckout()
     {
-
-
-        Blade::directive('paystackEmbeded', function ($expression) {
-
-            /**
-             * @param $expression  contains 4 parameters
+        /**
+             * $expression contains 4 parameters.
              * @param $params[0] amount
              * @param $params[1] callback
              * @param $params[2] email
@@ -74,32 +60,27 @@ class PaystackBladeDirective
              *
              */
 
+        Blade::directive('paystackEmbeded', function ($expression) {
             eval("\$params = [$expression];");
 
-            $amount = "\'" . $params[0] . "\'";
-            $callback =  $params[1];
-            $email =  $params[2];
-            $email = "\'" . $email . "\'";
+            $amount = $params[0];
+            $callback = $params[1];
+            $email = $params[2];
             $meta = isset($params[3]) ? $params[3] : '{}';
 
-            $public_key = "\'" . Config::get('paystack-lite.public_key') . "\'";
-            $paystack_js = '<script src="' . Config::get('paystack-lite.paystack_inline_js') . '"></script>';
-            $script_open = "<script>";
-            $script_closed = "</script>";
+            $public_key = Config::get('paystack-lite.public_key');
+            $cdn = Config::get('paystack-lite.paystack_inline_js');
 
-            return "<?php
-
-            echo ' $paystack_js
-
-            <div id=\"paystackEmbedContainer\"></div>
-            $script_open
-
+            return <<<PAYSTACK
+            <div id="paystackEmbedContainer"></div>
+            <script src="$cdn"></script>
+            <script>
                 var options = {
-                    key: $public_key,
-                    email: $email,
-                    amount: $amount+\'00\',
+                    key: "$public_key",
+                    email: "$email",
+                    amount: "$amount"+'00',
                     metadata:  $meta,
-                    container: \'paystackEmbedContainer\',
+                    container: 'paystackEmbedContainer',
                     callback: function(response){
                         $callback(response);
                     }
@@ -107,10 +88,8 @@ class PaystackBladeDirective
 
                 var handler = PaystackPop.setup(options);
                 handler.openIframe();
-
-            $script_closed
-            ';
-            ?>";
+            </script>
+            PAYSTACK;
         });
     }
 }
