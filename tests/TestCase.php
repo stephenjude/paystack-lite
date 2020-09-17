@@ -26,4 +26,14 @@ class TestCase extends BaseTestCase
     {
         $this->assertEquals($expected_html, $this->renderBlade($blade_directive));
     }
+
+
+    public function generateExpectedOutput()
+    {
+        $blade_directive = "@paystackEmbeded(1000, 'onPaymentCompleted', 'customer@email.com')";
+
+        file_put_contents(base_path('outputs/embedded_output.txt'), $this->renderBlade($blade_directive));
+
+        file_put_contents(base_path('outputs/popup_output.txt'), $this->renderBlade('@paystack'));
+    }
 }

@@ -22,30 +22,30 @@ class PaystackBladeDirective
             $cdn = Config::get('paystack-lite.paystack_inline_js');
 
             return <<<EOD
-            <script src="$cdn"></script>
-            <script>
-            function payWithPaystack(amount, email, meta, callback, onclose) {
-               var meta_data = meta ? meta : {};
-                var options = {
-                    key: "$public_key",
-                    email: email,
-                    amount: amount+'00',
-                    metadata: meta,
-                    callback: function(response){
-                        callback(response);
-                    },
-                    onClose:function(){
-                        if(onclose){
-                            onclose();
-                        }
-                    }
-                };
-
-                var handler = PaystackPop.setup(options);
-                handler.openIframe();
+<script src="$cdn"></script>
+<script>
+function payWithPaystack(amount, email, meta, callback, onclose) {
+    var meta_data = meta ? meta : {};
+    var options = {
+        key: "$public_key",
+        email: email,
+        amount: amount+'00',
+        metadata: meta,
+        callback: function(response){
+            callback(response);
+        },
+        onClose:function(){
+            if(onclose){
+                onclose();
             }
-            </script>
-            EOD;
+        }
+    };
+
+    var handler = PaystackPop.setup(options);
+    handler.openIframe();
+}
+</script>
+EOD;
         });
     }
 
@@ -72,24 +72,24 @@ class PaystackBladeDirective
             $cdn = Config::get('paystack-lite.paystack_inline_js');
 
             return <<<EOD
-            <div id="paystackEmbedContainer"></div>
-            <script src="$cdn"></script>
-            <script>
-                var options = {
-                    key: "$public_key",
-                    email: "$email",
-                    amount: "$amount"+'00',
-                    metadata:  $meta,
-                    container: 'paystackEmbedContainer',
-                    callback: function(response){
-                        $callback(response);
-                    }
-                };
+<div id="paystackEmbedContainer"></div>
+<script src="$cdn"></script>
+<script>
+    var options = {
+        key: "$public_key",
+        email: "$email",
+        amount: "$amount"+'00',
+        metadata:  $meta,
+        container: 'paystackEmbedContainer',
+        callback: function(response){
+            $callback(response);
+        }
+    };
 
-                var handler = PaystackPop.setup(options);
-                handler.openIframe();
-            </script>
-            EOD;
+    var handler = PaystackPop.setup(options);
+    handler.openIframe();
+</script>
+EOD;
         });
     }
 }

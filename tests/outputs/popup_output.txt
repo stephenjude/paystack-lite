@@ -1,7 +1,7 @@
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
 function payWithPaystack(amount, email, meta, callback, onclose) {
-   var meta_data = meta ? meta : {};
+    var meta_data = meta ? meta : {};
     var options = {
         key: "",
         email: email,
