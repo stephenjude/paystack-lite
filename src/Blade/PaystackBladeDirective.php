@@ -5,8 +5,6 @@ namespace Stephenjude\PaystackLite\Blade;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 
-use function GuzzleHttp\json_encode;
-
 class PaystackBladeDirective
 {
     // Build your next great package.
@@ -20,113 +18,78 @@ class PaystackBladeDirective
     private static function paystackPopupCheckout()
     {
         Blade::directive('paystack', function () {
+            $public_key = Config::get('paystack-lite.public_key');
+            $cdn = Config::get('paystack-lite.paystack_inline_js');
 
-            $fallback_email = "\'" . Config::get('paystack-lite.customer_fallback_email') . "\'";
-            $public_key = "\'" . Config::get('paystack-lite.public_key') . "\'";
-            $paystack_js = '<script src="' . Config::get('paystack-lite.paystack_inline_js') . '"></script>';
-            $script_open = "<script>";
-            $script_closed = "</script>";
-
-            return "<?php
-            echo ' 
-            $paystack_js
-
-            $script_open
-            function payWithPaystack(amount, email, meta, callback, onclose) {
-               var meta_data = meta ? meta : {};
-                var options = { 
-                    key: $public_key,
-                    email: email,
-                    amount: amount+\'00\',
-                    metadata: meta,
-                    callback: function(response){
-                        callback(response);
-                    },
-                    onClose:function(){
-                        if(onclose){
-                            onclose();
-                        }
-                    }
-                };
-
-                //check if email is valide else fallback
-                if(!Boolean(options.email)){
-                    options.email = $fallback_email;
-                }else{
-                    if(!validateEmail(email)){
-                        options.email = $fallback_email;
-                    }
-                }
-
-                var handler = PaystackPop.setup(options);
-                handler.openIframe();
+            return <<<EOD
+<script src="$cdn"></script>
+<script>
+function payWithPaystack(amount, email, meta, callback, onclose) {
+    var meta_data = meta ? meta : {};
+    var options = {
+        key: "$public_key",
+        email: email,
+        amount: amount+'00',
+        metadata: meta,
+        callback: function(response){
+            callback(response);
+        },
+        onClose:function(){
+            if(onclose){
+                onclose();
             }
+        }
+    };
 
-            function validateEmail(email) {
-                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(email);
-            }
-            
-            $script_closed
-            ';
-            ?>";
+    var handler = PaystackPop.setup(options);
+    handler.openIframe();
+}
+</script>
+EOD;
         });
     }
 
-
     private static function paystackEmbededCheckout()
     {
-
-
-        Blade::directive('paystackEmbeded', function ($expression) {
-
-            /**
-             * @param $expression  contains 4 parameters
+        /**
+             * $expression contains 4 parameters.
              * @param $params[0] amount
              * @param $params[1] callback
              * @param $params[2] email
              * @param $params[3] meta
-             * 
+             *
              */
 
+        Blade::directive('paystackEmbeded', function ($expression) {
             eval("\$params = [$expression];");
 
-            $amount = "\'" . $params[0] . "\'";
-            $callback =  $params[1];
-            $fallback_email = Config::get('paystack-lite.customer_fallback_email');
-            $email =  isset($params[2]) ? filter_var($params[2], FILTER_VALIDATE_EMAIL) ? $params[2] : $fallback_email  : $fallback_email;
-            $email = "\'" . $email . "\'";
+            $amount = $params[0];
+            $callback = $params[1];
+            $email = $params[2];
             $meta = isset($params[3]) ? $params[3] : '{}';
 
-            $public_key = "\'" . Config::get('paystack-lite.public_key') . "\'";
-            $paystack_js = '<script src="' . Config::get('paystack-lite.paystack_inline_js') . '"></script>';
-            $script_open = "<script>";
-            $script_closed = "</script>";
+            $public_key = Config::get('paystack-lite.public_key');
+            $cdn = Config::get('paystack-lite.paystack_inline_js');
 
-            return "<?php
-            
-            echo ' $paystack_js
+            return <<<EOD
+<div id="paystackEmbedContainer"></div>
+<script src="$cdn"></script>
+<script>
+    var options = {
+        key: "$public_key",
+        email: "$email",
+        amount: "$amount"+'00',
+        metadata:  $meta,
+        container: 'paystackEmbedContainer',
+        callback: function(response){
+            $callback(response);
+        }
+    };
 
-            <div id=\"paystackEmbedContainer\"></div>
-            $script_open
-            
-                var options = { 
-                    key: $public_key,
-                    email: $email,
-                    amount: $amount+\'00\',
-                    metadata:  $meta,
-                    container: \'paystackEmbedContainer\',
-                    callback: function(response){
-                        $callback(response);
-                    }
-                };
-
-                var handler = PaystackPop.setup(options);
-                handler.openIframe();
-
-            $script_closed
-            ';
-            ?>";
+    var handler = PaystackPop.setup(options);
+    handler.openIframe();
+</script>
+EOD;
         });
     }
 }

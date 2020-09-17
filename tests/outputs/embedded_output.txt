@@ -1,20 +1,17 @@
+<div id="paystackEmbedContainer"></div>
 <script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+    var options = {
+        key: "",
+        email: "customer@email.com",
+        amount: "1000"+'00',
+        metadata:  {},
+        container: 'paystackEmbedContainer',
+        callback: function(response){
+            onPaymentCompleted(response);
+        }
+    };
 
-            <div id="paystackEmbedContainer"></div>
-            <script>
-            
-                var options = { 
-                    key: '',
-                    email: 'customer@email.com',
-                    amount: '1000'+'00',
-                    metadata:  {},
-                    container: 'paystackEmbedContainer',
-                    callback: function(response){
-                        onPaymentCompleted(response);
-                    }
-                };
-
-                var handler = PaystackPop.setup(options);
-                handler.openIframe();
-
-            </script>
+    var handler = PaystackPop.setup(options);
+    handler.openIframe();
+</script>
